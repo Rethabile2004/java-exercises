@@ -10,7 +10,7 @@ void main() {
 //    exercise5();
 //    exercise6();
 //exercise7();
-    exercise8();
+    exercise9();
 }
 void exercise1(){
     System.out.println("Programming in Java is fun!!");
@@ -126,5 +126,39 @@ void exercise8(){
     System.out.printf("Total Cost: %.2f",totalCost);
 }
 void exercise9(){
+        double temperature;
+        Scanner scanner=new Scanner(System.in);
+        System.out.print("Enter the temperatute: ");
+        temperature=scanner.nextDouble();
+        double fahrenheit=temperature*9/5+32;
+        System.out.println("Celsius: "+temperature);
+    System.out.println("Fahrenheit: "+fahrenheit);
 
+}
+
+void exercise(){
+    String name, studentNumber, course;
+    int age, numberOfModules;
+    double averege;
+    Scanner scanner =new Scanner(System.in);
+    System.out.print("Enter your name: ");
+    name=scanner.nextLine();
+    System.out.print("Enter your student number: ");
+    studentNumber=scanner.nextLine();
+    System.out.print("Enter your age: ");
+    age=scanner.nextInt();
+    System.out.print("Enter your course: ");
+    course=scanner.nextLine();
+    System.out.print("Enter your first semester average: ");
+    averege=scanner.nextDouble();
+    System.out.print("Enter the number of modules you are taking: ");
+    numberOfModules=scanner.nextInt();
+
+    System.out.println("=== Student Registration ===");
+    System.out.println("Name: " + name);
+    System.out.println("Course name: " + course);
+    System.out.println("Student number: " + studentNumber);
+    System.out.println("Age: " + age);
+    System.out.println("Semester average: " + averege);
+    System.out.println("Modules taken: " + numberOfModules);
 }
