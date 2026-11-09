@@ -86,24 +86,15 @@ void exercise5(){
     int result=0;
     System.out.print("Enter the operation(/,*,-,+): ");
     operation=scanner.next().charAt(0);
-    switch (operation){
-        case '+':
-            result=num1+num2;
-            break;
-        case '-':
-            result=num1-num2;
-            break;
-        case '*':
-            result=num1*num2;
-            break;
-        case '/':
-            result=num1/num2;
-            break;
-        default:
+    resuzslt = switch (operation) {
+        case '+' -> num1 + num2;
+        case '-' -> num1 - num2;
+        case '*' -> num1 * num2;
+        case '/' -> num1 / num2;
+        default -> {
             System.out.println("Invalid input");
-            result=0;
-            break;
-
-    }
+            yield 0;
+        }
+    };
     System.out.println(String.format("%d%c%d=%d",num1,operation,num2,result));
 }
