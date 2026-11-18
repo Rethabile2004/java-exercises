@@ -1,16 +1,54 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-//    exercise1();
-//    exercise3();
-    try {
-//        exercise4();
-        Person jeff=new Person("Jess",55);
-//    }catch (FileNotFoundException e){
-//        System.out.print("Unable to locate the file");
+class Person{
+    private String name;
+    private int age;
+
+    public Person(String pName, int pAge) throws IllegalArgumentException {
+        if(age<18)
+            throw new IllegalArgumentException("Age must be above 18.");
+        name = pName;
+        age = pAge;
     }
-    catch (IllegalAccessException e){
-        System.out.print("Invalid argument.");
+    public void displayDetails(){
+        System.out.print("Name: " + name + "\nAge: " + age);
+    }
+}
+void prompt(String message){
+    System.out.print(message+": ");
+
+}
+void regSys() throws Exception{
+    String name, email, passwd;
+    int age;
+    Scanner scanner = new Scanner(System.in);
+    prompt("Enter your name");
+    name = scanner.nextLine();
+    prompt("Email");
+    email = scanner.nextLine();
+    if(!email.contains("@")){
+        throw new Exception("Please enter a valid email");
+    }
+    prompt("Age");
+    age=scanner.nextInt();
+    if(age<18){
+        throw new Exception("Must be at least 18 to register.");
+    }
+    prompt("Password");
+    passwd = scanner.nextLine();
+
+    System.out.print("Processing...\nProcessing...\nProcessing...\n");
+
+scanner.close();
+    System.out.print("Registered successfully.");
+
+}
+void main() {
+    try {
+        regSys();
+    }
+    catch (Exception e){
+        System.out.print(e.getMessage());
+
     }
 }
 
@@ -80,15 +118,23 @@ void exercise4() throws FileNotFoundException{
     scanner.close();
 }
 
-class Person{
-    private String name;
-    private int age;
+public class InsufficientFundsException extends Exception{
+    public InsufficientFundsException(String message){
+        super(message);}
+}
 
-    public Person(String pName, int pAge) throws IllegalAccessException {
-        name = pName;
-        age = pAge;
+public class BankAccount{
+    private int accountNumber;
+    private double balance;
+    public BankAccount(int a,double b){
+        accountNumber = a;
+        balance = b;
     }
-    public void displayDetails(){
-        System.out.print("Name: " + name + "\nAge: " + age);
+    public void withdraw(double amount)throws InsufficientFundsException{
+        if(amount>balance){
+            throw new InsufficientFundsException("Withdrawal amount is greater than current balance");
+        }
+        System.out.printf("Withdrawing....\n\nSuccess\nCurrent balance: %.2f", balance);
+
     }
 }
